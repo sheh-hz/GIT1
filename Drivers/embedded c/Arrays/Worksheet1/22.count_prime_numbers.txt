@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main()
+{
+    int num,i,j,c=0,count=0;
+    printf("Enter the number of elements:");
+    scanf("%d",&num);
+    int arr[num];
+    printf("Input : ");
+    for(i=0;i<num;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    printf("primes : ");
+    for(i=0;i<num;i++)
+    {
+        c=0;
+        for(j=1;j<=arr[i];j++)
+        {
+            if(arr[i]%j==0)
+            {
+                c++;
+            }
+        }
+        if(c==2)
+        {
+            count++;
+            printf("%d ",arr[i]);
+        }
+    }
+    printf("count:%d",count);
+    return 0;
+}

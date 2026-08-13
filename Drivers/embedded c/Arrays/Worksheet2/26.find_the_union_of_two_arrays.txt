@@ -1,0 +1,61 @@
+#include <stdio.h>
+
+int main()
+{
+    int i, j, n = 3, found;
+    int arr1[5], arr2[5];
+
+    printf("Input1 : ");
+    for(i = 0; i < n; i++)
+        scanf("%d", &arr1[i]);
+
+    printf("Input2 : ");
+    for(i = 0; i < n; i++)
+        scanf("%d", &arr2[i]);
+
+    for(i = 0; i < n; i++)
+    {
+        found = 1;
+        for(j = 0; j < i; j++)
+        {
+            if(arr1[i] == arr1[j])
+            {
+                found = 0;
+                break;
+            }
+        }
+        if(found)
+            printf("%d ", arr1[i]);
+    }
+
+    for(i = 0; i < n; i++)
+    {
+        found = 1;
+
+        for(j = 0; j < n; j++)
+        {
+            if(arr2[i] == arr1[j])
+            {
+                found = 0;
+                break;
+            }
+        }
+
+        if(found)
+        {
+            for(j = 0; j < i; j++)
+            {
+                if(arr2[i] == arr2[j])
+                {
+                    found = 0;
+                    break;
+                }
+            }
+        }
+
+        if(found)
+            printf("%d ", arr2[i]);
+    }
+
+    return 0;
+}

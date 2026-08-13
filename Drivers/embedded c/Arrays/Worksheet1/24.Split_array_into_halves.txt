@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main()
+{
+    int num,i,count=0,j;
+    printf("Enter the number of elements:");
+    scanf("%d",&num);
+    int arr[num];
+    printf("Input : ");
+    for(i=0;i<num;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    int half1[num/2],half2[num/2];
+    
+    for(i=0;i<num/2;i++)
+    {
+        half1[i]=arr[i];
+    }
+    for(j=0;j<num/2;j++)
+    {
+        half2[j]=arr[i];
+        i++;
+    }
+    printf("first half : ");
+    for(i=0;i<num/2;i++)
+    {
+        printf("%d\t",half1[i]);
+    }
+    printf("\nsecond half : ");
+    for(i=0;i<num/2;i++)
+    {
+        printf("%d\t",half2[i]);
+    }
+    return 0;
+}

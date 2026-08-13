@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main()
+{
+    int num,i;
+    printf("Enter the number of elements:");
+    scanf("%d",&num);
+    int arr[num],cop[num];
+    printf("Input : ");
+    for(i=0;i<num;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    for(i=0;i<num;i++)
+    {
+        cop[i]=arr[i];
+    }
+    printf("Copied array : ");
+    for(i=0;i<num;i++)
+    {
+        printf("%d ",cop[i]);
+    }
+    return 0;
+}

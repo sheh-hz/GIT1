@@ -1,0 +1,35 @@
+
+#include <stdio.h>
+
+int main()
+{
+    int num,i,pos,j;
+    printf("Enter the number of elements:");
+    scanf("%d",&num);
+    int arr[num],arr1[num],arr2[num+num];
+    printf("array : ");
+    for(i=0;i<num;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    printf("secon array : ");
+    for(i=0;i<num;i++)
+    {
+        scanf("%d",&arr1[i]);
+    }
+    for(i = 0; i < num; i++)
+    {
+        arr2[i]=arr[i];
+    }
+    for(j=0;j<num;j++)
+    {
+        arr2[i]=arr1[j];i++;
+    }
+    
+    for(i=0;i<2*num;i++)
+    {
+        printf("%d\t",arr2[i]);
+    }
+    
+    return 0;
+}

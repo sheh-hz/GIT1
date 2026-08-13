@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int main()
+{
+    int num,i;
+    printf("Enter the number of elements:");
+    scanf("%d",&num);
+    int arr[num];
+        
+    printf("array : ");
+    for(i=0;i<num;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    int large=arr[0],secondlarge=arr[0];
+    for(i=1;i<num;i++)
+    {
+        if(arr[i]>large)
+        {
+            secondlarge=large;
+            large=arr[i];
+        }
+        else if(arr[i]<large && arr[i]>secondlarge)
+        {
+            secondlarge=arr[i];
+        }
+    }
+    printf("secondlarge : %d",secondlarge);
+    
+    
+    return 0;
+}

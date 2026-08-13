@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int main()
+{
+    int num,i,pos,value;
+    printf("Enter the number of elements:");
+    scanf("%d",&num);
+    int arr[num+1];
+    printf("Input : ");
+    for(i=0;i<num;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    printf("Insert : ");
+    scanf("%d%d",&value,&pos);
+    
+    printf("%d at position %d\n",value,pos);
+    for(i=num-1;i>=pos-1;i--)
+    {
+        arr[i+1]=arr[i];
+        
+    }
+    arr[pos-1]=value;
+    for(i=0;i<num+1;i++)
+    {
+        printf("%d\t",arr[i]);
+    }
+    
+    return 0;
+}

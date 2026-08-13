@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main()
+{
+    int num,i,count=0,j;
+    printf("Enter the number of elements:");
+    scanf("%d",&num);
+    int arr[num],freq[num];
+    
+    for (int i = 0; i < num; i++)
+        freq[i] = 0;
+        
+    printf("array : ");
+    for(i=0;i<num;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    
+    for(i=0;i<num;i++)
+    {
+        if(freq[i]==1)
+            continue;
+        count=1;
+        for(j=i+1;j<num;j++)
+        {
+            if(arr[i]==arr[j])
+            {
+                freq[j]=1;
+                count++;
+            }
+        }
+        printf("%d occurs %d time\n",arr[i],count);
+    }
+    
+    return 0;
+}

@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main()
+{
+    int num,i,find;
+    printf("Enter the number of elements:");
+    scanf("%d",&num);
+    int arr[num];
+    printf("Input : ");
+    for(i=0;i<num;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    printf("Find : ");
+    scanf("%d",&find);
+    for(i=0;i<num;i++)
+    {
+        if(arr[i]==find)
+        {
+            printf("Element found at index: %d",i);
+            break;
+        }
+    }
+    
+    return 0;
+}
