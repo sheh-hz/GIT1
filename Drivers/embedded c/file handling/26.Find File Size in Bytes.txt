@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main()
+{
+    FILE *fp;
+    long size;
+
+    fp = fopen("a.txt", "rb");
+
+    if (fp == NULL)
+    {
+        printf("Unable to open file\n");
+        return 1;
+    }
+
+    fseek(fp, 0, SEEK_END);
+
+    size = ftell(fp);
+
+    fclose(fp);
+
+    printf("Size: %ld bytes\n", size);
+
+    return 0;
+}

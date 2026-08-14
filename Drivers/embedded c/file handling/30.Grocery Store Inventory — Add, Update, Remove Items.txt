@@ -1,0 +1,161 @@
+#include <stdio.h>
+#include <string.h>
+
+struct Item
+{
+    char name[50];
+    char quantity[30];
+    float price;
+};
+
+int main()
+{
+    FILE *fp, *temp;
+    struct Item item;
+    char searchName[50];
+    int choice;
+    int found;
+
+    printf("1. Add Item\n");
+    printf("2. Update Item\n");
+    printf("3. Remove Item\n");
+    printf("Enter choice: ");
+    scanf("%d", &choice);
+
+    /* ---------------- ADD ---------------- */
+
+    if (choice == 1)
+    {
+        printf("Enter item name: ");
+        scanf("%49s", item.name);
+
+        printf("Enter quantity: ");
+        scanf("%29s", item.quantity);
+
+        printf("Enter price: ");
+        scanf("%f", &item.price);
+
+        fp = fopen("inventory.txt", "a");
+
+        if (fp == NULL)
+        {
+            printf("Unable to open file\n");
+            return 1;
+        }
+
+        fprintf(fp, "%s,%s,%.2f\n",
+                item.name,
+                item.quantity,
+                item.price);
+
+        fclose(fp);
+
+        printf("Item added successfully\n");
+    }
+
+    /* ---------------- UPDATE ---------------- */
+
+    else if (choice == 2)
+    {
+        printf("Enter item name to update: ");
+        scanf("%49s", searchName);
+
+        fp = fopen("inventory.txt", "r");
+        temp = fopen("temp.txt", "w");
+
+        if (fp == NULL || temp == NULL)
+        {
+            printf("Unable to open file\n");
+            return 1;
+        }
+
+        found = 0;
+
+        while (fscanf(fp, "%49[^,],%29[^,],%f\n",
+                      item.name,
+                      item.quantity,
+                      &item.price) == 3)
+        {
+            if (strcmp(item.name, searchName) == 0)
+            {
+                found = 1;
+
+                printf("Enter new quantity: ");
+                scanf("%29s", item.quantity);
+
+                printf("Enter new price: ");
+                scanf("%f", &item.price);
+            }
+
+            fprintf(temp, "%s,%s,%.2f\n",
+                    item.name,
+                    item.quantity,
+                    item.price);
+        }
+
+        fclose(fp);
+        fclose(temp);
+
+        remove("inventory.txt");
+        rename("temp.txt", "inventory.txt");
+
+        if (found)
+            printf("Item updated successfully\n");
+        else
+            printf("Item not found\n");
+    }
+
+    /* ---------------- REMOVE ---------------- */
+
+    else if (choice == 3)
+    {
+        printf("Enter item name to remove: ");
+        scanf("%49s", searchName);
+
+        fp = fopen("inventory.txt", "r");
+        temp = fopen("temp.txt", "w");
+
+        if (fp == NULL || temp == NULL)
+        {
+            printf("Unable to open file\n");
+            return 1;
+        }
+
+        found = 0;
+
+        while (fscanf(fp, "%49[^,],%29[^,],%f\n",
+                      item.name,
+                      item.quantity,
+                      &item.price) == 3)
+        {
+            if (strcmp(item.name, searchName) == 0)
+            {
+                found = 1;
+                continue;
+            }
+
+            fprintf(temp, "%s,%s,%.2f\n",
+                    item.name,
+                    item.quantity,
+                    item.price);
+        }
+
+        fclose(fp);
+        fclose(temp);
+
+        remove("inventory.txt");
+        rename("temp.txt", "inventory.txt");
+
+        if (found)
+            printf("Item removed successfully\n");
+        else
+            printf("Item not found\n");
+    }
+
+    else
+    {
+        printf("Invalid choice\n");
+    }
+
+    return 0;
+}

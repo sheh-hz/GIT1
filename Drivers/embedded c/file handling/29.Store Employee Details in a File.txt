@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+struct Employee
+{
+    char name[50];
+    int age;
+};
+
+int main()
+{
+    struct Employee emp;
+    FILE *fp;
+
+    printf("Enter employee name: ");
+    scanf("%49s", emp.name);
+
+    printf("Enter employee age: ");
+    scanf("%d", &emp.age);
+
+    fp = fopen("employee.txt", "a");
+
+    if (fp == NULL)
+    {
+        printf("Unable to open file\n");
+        return 1;
+    }
+
+    fprintf(fp, "Name: %s, Age: %d\n",
+            emp.name, emp.age);
+
+    fclose(fp);
+
+    printf("Employee added (info saved in file)\n");
+
+    return 0;
+}

@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main()
+{
+    FILE *src, *dest;
+    char ch;
+
+    src = fopen("extra.txt", "r");
+    dest = fopen("main.txt", "a");
+
+    if (src == NULL || dest == NULL)
+    {
+        printf("Unable to open file\n");
+        return 1;
+    }
+
+    while ((ch = fgetc(src)) != EOF)
+    {
+        fputc(ch, dest);
+    }
+
+    fclose(src);
+    fclose(dest);
+
+    printf("Contents appended successfully.\n");
+
+    return 0;
+}

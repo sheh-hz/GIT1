@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char path1[] = "/home/user/docs/a.txt";
+    char path2[] = "/home/user/docs/b.txt";
+    char path3[] = "/home/user/docs/old/c.txt";
+
+    int i = 0;
+    int lastSlash = 0;
+
+    while (path1[i] != '\0' &&
+           path2[i] != '\0' &&
+           path3[i] != '\0')
+    {
+        if (path1[i] != path2[i] ||
+            path1[i] != path3[i])
+        {
+            break;
+        }
+
+        if (path1[i] == '/')
+            lastSlash = i;
+
+        i++;
+    }
+
+    printf("Common path: ");
+
+    for (i = 0; i < lastSlash; i++)
+        printf("%c", path1[i]);
+
+    printf("\n");
+
+    return 0;
+}
