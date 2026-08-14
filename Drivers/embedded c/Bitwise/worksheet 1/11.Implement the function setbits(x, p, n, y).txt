@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+unsigned int setbits(unsigned int x, int p, int n, unsigned int y)
+{
+    unsigned int mask = (1U << n) - 1;
+    unsigned int ybits = y & mask;
+
+    x &= ~(mask << (p - n + 1));
+    x |= (ybits << (p - n + 1));
+
+    return x;
+}
+
+int main()
+{
+    unsigned int x = 44;
+    unsigned int y = 13;
+
+    printf("Result = %u\n", setbits(x, 4, 3, y));
+
+    return 0;
+}

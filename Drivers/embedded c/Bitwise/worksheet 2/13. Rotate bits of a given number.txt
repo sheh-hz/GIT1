@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int main() {
+    int n,rotate,i=0;
+    scanf("%d",&n);
+    printf("rotate : ");
+    scanf("%d",&rotate);
+    printf("rotate before : %b\n",n);
+    n=n<<rotate;
+    printf("rotate after : %b\n",n);
+
+    return 0;
+}

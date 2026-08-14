@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int countSetBits(unsigned int num)
+{
+    int count = 0;
+
+    while (num)
+    {
+        num &= (num - 1);
+        count++;
+    }
+
+    return count;
+}
+
+int main()
+{
+    unsigned int num;
+
+    printf("Enter a number: ");
+    scanf("%u", &num);
+
+    printf("Number of set bits = %d\n", countSetBits(num));
+
+    if (num & (1<< 20))
+        printf("20th bit is SET\n");
+    else
+        printf("20th bit is CLEAR\n");
+
+    return 0;
+}

@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+unsigned int reverseOddEvenBits(unsigned int num)
+{
+    unsigned int even = num & 0x55555555;
+    unsigned int odd = num & 0xAAAAAAAA;
+
+    even <<= 1;
+    odd >>= 1;
+
+    return (even | odd);
+}
+
+int main()
+{
+    unsigned int num;
+
+    printf("Enter a number: ");
+    scanf("%u", &num);
+
+    printf("Result = %u\n", reverseOddEvenBits(num));
+
+    return 0;
+}

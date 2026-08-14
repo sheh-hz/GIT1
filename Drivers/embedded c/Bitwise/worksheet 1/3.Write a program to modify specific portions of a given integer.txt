@@ -1,0 +1,56 @@
+#include <stdio.h>
+void setalllsb(int num)
+{
+    num=num|(0x000000FF);
+    printf("%d\n",num);
+}
+void setallmsb(int num)
+{
+    num=num|(0xFF000000);
+    printf("%d\n",num);
+}
+void setalllsbnibble(int num)
+{
+    num=num|(0x0000000F);
+    printf("%b\n",num);
+}
+void setallmsbnibble(int num)
+{
+    num=num|(0xF0000000);
+    printf("%b\n",num);
+}
+void setnbits(int num,int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        num=num|(1<<i);
+    }
+    printf("%b\n",num);
+}
+void clrnbits(int num,int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        num=num&~(1<<i);
+    }
+    printf("%b\n",num);
+}
+void togglenbits(int num,int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        num=num^(1<<i);
+    }
+    printf("%b\n",num);
+}
+int main()
+{
+	setalllsb(10);
+	setallmsb(10);
+	setalllsbnibble(10);
+	setallmsbnibble(10);
+	setnbits(10,5);
+	clrnbits(10,5);
+	togglenbits(10,5);
+	return 0;
+}

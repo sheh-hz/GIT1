@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+unsigned int reverse(int num)
+{
+    unsigned int rev = 0;
+
+    for (int i = 0; i < 32; i++)
+    {
+        rev <<= 1;
+        rev |= (num & 1);
+        num >>= 1;
+    }
+    return rev;
+}
+
+int main()
+{
+    int a=13;
+    
+    printf("reverse : %u",reverse(a));
+    return 0;
+}

@@ -1,0 +1,23 @@
+#include <stdio.h>
+int highestsetbit(int num)
+{
+    int pos,i;
+    for(i=0;i<32;i++)
+    {
+        if(num&(1<<i))
+        {
+          pos=i;  
+          break;
+        }
+    }
+    return pos;
+}
+
+
+int main()
+{
+    int a=40;
+    
+    printf("highest set bit : %d",highestsetbit(a));
+    return 0;
+}

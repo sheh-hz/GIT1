@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+unsigned int swapEndian(unsigned int num)
+{
+    return ((num & 0x000000FF) << 24) |
+           ((num & 0x0000FF00) << 8)  |
+           ((num & 0x00FF0000) >> 8)  |
+           ((num & 0xFF000000) >> 24);
+}
+
+int main()
+{
+    unsigned int num;
+
+    printf("Enter a hexadecimal number: ");
+    scanf("%x", &num);
+
+    printf("Original      : 0x%08X\n", num);
+    printf("Big Endian    : 0x%08X\n", swapEndian(num));
+
+    return 0;
+}

@@ -1,0 +1,39 @@
+#include <stdio.h>
+void andd(int a,int b)
+{
+    int c=a&b;
+    printf("and: %d\n",c);
+}
+void orr(int a,int b)
+{
+    int c=a|b;
+    printf("orr: %d\n",c);
+}
+void xorr(int a,int b)
+{
+    int c=a^b;
+    printf("xorr: %d\n",c);
+}
+void leftshift(int a,int b)
+{
+    int c=a<<b;
+    printf("leftshift: %d\n",c);
+}
+void rightshift(int a,int b)
+{
+    int c=a>>b;
+    printf("rightshift: %d",c);
+}
+
+
+int main()
+{
+    
+    andd(2,3);
+    orr(2,3);
+    xorr(2,3);
+    leftshift(2,3);
+    rightshift(2,3);
+
+    return 0;
+}

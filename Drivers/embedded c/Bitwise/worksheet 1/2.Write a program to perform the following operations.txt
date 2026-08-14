@@ -1,0 +1,24 @@
+#include <stdio.h>
+int setlsb(int a,int pos)
+{
+	a|=(1<<pos);
+	return a;
+}
+int clrlsb(int a,int pos)
+{
+	a&=~(1<<pos);
+	return a;
+}
+int toggle(int a,int pos)
+{
+	a^=(1<<pos);
+	return a;
+}
+int main()
+{
+	int num=10,pos=0;
+	printf("setlsb : %d\n",setlsb(num,pos));
+	printf("clrlsb : %d\n",clrlsb(num,pos));
+	printf("clrlsb : %d\n",toggle(num,1));
+	return 0;
+}

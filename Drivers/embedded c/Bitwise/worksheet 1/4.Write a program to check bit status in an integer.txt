@@ -1,0 +1,30 @@
+#include <stdio.h>
+void checklsb(int num)
+{
+    if(num&1)
+        printf("set\n");
+    else
+        printf("clear\n");
+}
+void checkmsb(int num)
+{
+    if((num>>31)&1)
+        printf("set\n");
+    else
+        printf("clear\n");
+}
+void checknbit(int num,int n)
+{
+    if((num>>n)&1)
+        printf("set\n");
+    else
+        printf("clear\n");
+}
+
+int main()
+{
+	checklsb(10);
+	checkmsb(10);
+	checknbit(10,3);
+	return 0;
+}

@@ -1,0 +1,19 @@
+#include <stdio.h>
+int countnumofsetbit(int num)
+{
+    int c=0;
+    while(num)
+    {
+        num&=num-1;
+        c++;
+    }
+    return c;
+}
+int main()
+{
+    int num=10;
+	printf("count %d",countnumofsetbit(num));
+	
+
+	return 0;
+}

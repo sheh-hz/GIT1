@@ -1,0 +1,14 @@
+
+#include <stdio.h>
+#define set(num,pos) ((num) |= (1<< (pos)))
+#define clr(num,pos) ((num) &= ~(1 << (pos)))
+#define toggle(num,pos) ((num) ^= (1 << (pos)))
+int main()
+{
+    int num=10;
+	printf("set: %d\n",set(num,2));
+	printf("clr: %d\n",clr(num,2));
+	printf("toggle: %d\n",toggle(num,2));
+
+	return 0;
+}

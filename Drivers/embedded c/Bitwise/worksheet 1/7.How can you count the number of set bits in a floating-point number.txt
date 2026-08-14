@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+
+int countSetBitsFloat(float f)
+{
+    unsigned int bits;
+    memcpy(&bits, &f, sizeof(bits));
+
+    int count = 0;
+    while (bits)
+    {
+        bits &= (bits - 1);
+        count++;
+    }
+
+    return count;
+}
+
+int main()
+{
+    float f = 5.5f;
+    printf("%d\n", countSetBitsFloat(f));
+
+    return 0;
+}

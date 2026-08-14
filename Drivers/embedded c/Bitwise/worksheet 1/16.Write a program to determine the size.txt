@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main()
+{
+    unsigned int x = 1;
+    int bits = 0;
+
+    do
+    {
+        x <<= 1;
+        bits++;
+    } while (x != 0);
+
+    printf("Size of unsigned int = %d bits\n", bits);
+
+    return 0;
+}
