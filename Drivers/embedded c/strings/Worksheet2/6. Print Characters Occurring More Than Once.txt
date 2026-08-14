@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main()
+{
+    char a[] = "programming";
+    int b[256] = {0};
+    int i;
+
+    for (i = 0; a[i] != '\0'; i++)
+        b[(unsigned char)a[i]]++;
+
+    for (i = 0; a[i] != '\0'; i++)
+    {
+        if (b[(unsigned char)a[i]] > 1)
+        {
+            printf("%c ", a[i]);
+            b[(unsigned char)a[i]] = 0;
+        }
+    }
+
+    return 0;
+}

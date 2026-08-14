@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <string.h>
+
+int expand(char str[], int left, int right)
+{
+    while (left >= 0 &&
+           right < strlen(str) &&
+           str[left] == str[right])
+    {
+        left--;
+        right++;
+    }
+
+    return right - left - 1;
+}
+
+int main()
+{
+    char str[] = "babad";
+
+    int n = strlen(str);
+
+    int start = 0;
+    int maxLen = 1;
+
+    for (int i = 0; i < n; i++)
+    {
+        // Odd length palindrome
+        int len1 = expand(str, i, i);
+
+        // Even length palindrome
+        int len2 = expand(str, i, i + 1);
+
+        int len = (len1 > len2) ? len1 : len2;
+
+        if (len > maxLen)
+        {
+            maxLen = len;
+
+            start = i - (len - 1) / 2;
+        }
+    }
+
+    printf("Longest palindrome: ");
+
+    for (int i = start; i < start + maxLen; i++)
+        printf("%c", str[i]);
+
+    printf("\nLength = %d\n", maxLen);
+
+    return 0;
+}

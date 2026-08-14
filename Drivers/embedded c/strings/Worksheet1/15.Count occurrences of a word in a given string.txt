@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char a[200], word[50];
+    int count = 0;
+    char *pos;
+
+    scanf("%[^\n]", a);
+    scanf(" %[^\n]", word);
+
+    pos = a;
+
+    while ((pos = strstr(pos, word)) != NULL)
+    {
+        count++;
+        pos = pos + strlen(word);
+    }
+
+    printf("%s appears %d times", word, count);
+
+    return 0;
+}

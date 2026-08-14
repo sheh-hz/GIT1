@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main()
+{
+    char a[] = "sample string";
+    int b[256] = {0};
+    int i, max = 0;
+    char c;
+
+    for (i = 0; a[i] != '\0'; i++)
+        b[(unsigned char)a[i]]++;
+
+    for (i = 0; a[i] != '\0'; i++)
+    {
+        if (a[i] != ' ' && b[(unsigned char)a[i]] > max)
+        {
+            max = b[(unsigned char)a[i]];
+            c = a[i];
+        }
+    }
+
+    printf("Most frequent character: %c\n", c);
+
+    return 0;
+}

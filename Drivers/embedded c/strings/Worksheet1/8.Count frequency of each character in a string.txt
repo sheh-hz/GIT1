@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char a[100],chara;
+    int i, j, count, min, l;
+    int freq[256]={0};
+    scanf(" %[^\n]", a);
+    for(i=0;a[i]!='\0';i++)
+    {
+        freq[a[i]]++;
+    }
+    for(i=0;i<256;i++)
+    {
+        if(freq[i]>0)
+        {
+            printf("%c count %d\n",i,freq[i]);
+        }
+    }
+    return 0;
+}

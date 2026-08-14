@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <string.h>
+
+void interleave(char str1[], char str2[],
+                char result[], int i, int j, int k)
+{
+    // Both strings are completely used
+    if (str1[i] == '\0' && str2[j] == '\0')
+    {
+        result[k] = '\0';
+        printf("%s\n", result);
+        return;
+    }
+
+    // Take character from str1
+    if (str1[i] != '\0')
+    {
+        result[k] = str1[i];
+
+        interleave(str1, str2,
+                   result, i + 1, j, k + 1);
+    }
+
+    // Take character from str2
+    if (str2[j] != '\0')
+    {
+        result[k] = str2[j];
+
+        interleave(str1, str2,
+                   result, i, j + 1, k + 1);
+    }
+}
+
+int main()
+{
+    char str1[] = "AB";
+    char str2[] = "CD";
+
+    char result[100];
+
+    interleave(str1, str2, result, 0, 0, 0);
+
+    return 0;
+}

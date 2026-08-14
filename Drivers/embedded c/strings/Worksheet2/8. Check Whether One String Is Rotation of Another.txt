@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char a[] = "abcd";
+    char b[] = "cdab";
+    char c[100];
+
+    if (strlen(a) != strlen(b))
+    {
+        printf("No\n");
+        return 0;
+    }
+
+    strcpy(c, a);
+    strcat(c, a);
+
+    if (strstr(c, b) != NULL)
+        printf("Yes\n");
+    else
+        printf("No\n");
+
+    return 0;
+}

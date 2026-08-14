@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <string.h>
+#include <limits.h>
+
+int isPalindrome(char str[], int start, int end)
+{
+    while (start < end)
+    {
+        if (str[start] != str[end])
+            return 0;
+
+        start++;
+        end--;
+    }
+
+    return 1;
+}
+
+int main()
+{
+    char str[] = "ababbbabbababa";
+
+    int n = strlen(str);
+
+    int dp[n];
+
+    for (int i = 0; i < n; i++)
+        dp[i] = INT_MAX;
+
+    for (int i = 0; i < n; i++)
+    {
+        if (isPalindrome(str, 0, i))
+        {
+            dp[i] = 0;
+        }
+        else
+        {
+            for (int j = 1; j <= i; j++)
+            {
+                if (isPalindrome(str, j, i))
+                {
+                    if (dp[j - 1] + 1 < dp[i])
+                        dp[i] = dp[j - 1] + 1;
+                }
+            }
+        }
+    }
+
+    printf("Minimum partitions = %d\n", dp[n - 1] + 1);
+
+    return 0;
+}

@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char a[200], word[50];
+    char *pos;
+    int count = 0;
+
+    scanf("%[^\n]", a);
+    scanf(" %[^\n]", word);
+
+    pos = a;
+
+    while((pos = strstr(pos, word)) != NULL)
+    {
+        printf("Found at position %ld\n", pos - a);
+        count++;
+
+        pos = pos + strlen(word);
+    }
+
+    if(count == 0)
+        printf("Word not found");
+    else
+        printf("Total occurrences = %d", count);
+
+    return 0;
+}

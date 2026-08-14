@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char str[] = "Hello world";
+
+    char *word1 = strtok(str, " ");
+    char *word2 = strtok(NULL, " ");
+
+    printf("%s %s", word2, word1);
+
+    return 0;
+}

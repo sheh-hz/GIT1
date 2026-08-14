@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char a[200];
+    int i, j;
+
+    scanf("%[^\n]", a);
+
+    int len = strlen(a);
+
+    for(i = len - 1; i >= 0 && a[i] == ' '; i--)
+    {
+        a[i] = '\0';
+    }
+
+    for(i = 0; a[0] == ' '; i++)
+    {
+        for(j = 0; j < len; j++)
+        {
+            a[j] = a[j + 1];
+        }
+        len--;
+    }
+
+    printf("%s", a);
+
+    return 0;
+}

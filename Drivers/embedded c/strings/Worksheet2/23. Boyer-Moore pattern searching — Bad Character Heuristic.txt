@@ -1,0 +1,72 @@
+#include <stdio.h>
+#include <string.h>
+
+#define ASCII_SIZE 256
+
+void badCharacterTable(char pattern[], int m, int badChar[])
+{
+    for (int i = 0; i < ASCII_SIZE; i++)
+        badChar[i] = -1;
+
+    for (int i = 0; i < m; i++)
+        badChar[(unsigned char)pattern[i]] = i;
+}
+
+void boyerMoore(char text[], char pattern[])
+{
+    int n = strlen(text);
+    int m = strlen(pattern);
+
+    int badChar[ASCII_SIZE];
+
+    badCharacterTable(pattern, m, badChar);
+
+    int shift = 0;
+
+    while (shift <= n - m)
+    {
+        int j = m - 1;
+
+        // Compare from right to left
+        while (j >= 0 &&
+               pattern[j] == text[shift + j])
+        {
+            j--;
+        }
+
+        if (j < 0)
+        {
+            printf("Pattern found at index %d\n", shift);
+
+            if (shift + m < n)
+                shift += m - badChar[
+                    (unsigned char)text[shift + m]
+                ];
+            else
+                shift++;
+        }
+        else
+        {
+            int last = badChar[
+                (unsigned char)text[shift + j]
+            ];
+
+            int move = j - last;
+
+            if (move < 1)
+                move = 1;
+
+            shift += move;
+        }
+    }
+}
+
+int main()
+{
+    char text[] = "here is a simple example";
+    char pattern[] = "example";
+
+    boyerMoore(text, pattern);
+
+    return 0;
+}

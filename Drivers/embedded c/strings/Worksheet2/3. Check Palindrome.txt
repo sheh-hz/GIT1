@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char a[] = "madam";
+    int i, j, n;
+    int flag = 1;
+
+    n = strlen(a);
+
+    i = 0;
+    j = n - 1;
+
+    while (i < j)
+    {
+        if (a[i] != a[j])
+        {
+            flag = 0;
+            break;
+        }
+
+        i++;
+        j--;
+    }
+
+    if (flag)
+        printf("Palindrome\n");
+    else
+        printf("Not Palindrome\n");
+
+    return 0;
+}

@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <string.h>
+
+void perm(char *a, int l, int r)
+{
+    char c;
+    int i;
+
+    if (l == r)
+    {
+        printf("%s\n", a);
+        return;
+    }
+
+    for (i = l; i <= r; i++)
+    {
+        c = a[l];
+        a[l] = a[i];
+        a[i] = c;
+
+        perm(a, l + 1, r);
+
+        c = a[l];
+        a[l] = a[i];
+        a[i] = c;
+    }
+}
+
+int main()
+{
+    char a[] = "ABC";
+
+    perm(a, 0, strlen(a) - 1);
+
+    return 0;
+}

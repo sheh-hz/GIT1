@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <string.h>
+#include <limits.h>
+
+int main()
+{
+    char str1[] = "this is a test string";
+    char str2[] = "tist";
+
+    int need[256] = {0};
+    int have[256] = {0};
+
+    int required = 0;
+    int start = 0;
+    int count = 0;
+    int minLen = INT_MAX;
+    int minStart = 0;
+
+    // Count characters required from str2
+    for (int i = 0; str2[i] != '\0'; i++)
+    {
+        if (need[(unsigned char)str2[i]] == 0)
+            required++;
+
+        need[(unsigned char)str2[i]]++;
+    }
+
+    for (int end = 0; str1[end] != '\0'; end++)
+    {
+        unsigned char ch = str1[end];
+
+        have[ch]++;
+
+        if (need[ch] > 0 && have[ch] == need[ch])
+            count++;
+
+        // Try to shrink the window
+        while (count == required)
+        {
+            if (end - start + 1 < minLen)
+            {
+                minLen = end - start + 1;
+                minStart = start;
+            }
+
+            unsigned char left = str1[start];
+
+            have[left]--;
+
+            if (need[left] > 0 && have[left] < need[left])
+                count--;
+
+            start++;
+        }
+    }
+
+    if (minLen != INT_MAX)
+    {
+        for (int i = minStart; i < minStart + minLen; i++)
+            printf("%c", str1[i]);
+    }
+
+    return 0;
+}

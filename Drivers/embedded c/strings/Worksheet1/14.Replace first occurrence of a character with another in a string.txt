@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char a[200];
+    int i, len,j;
+
+    scanf("%[^\n]", a);
+    len=strlen(a);
+    char m='o';
+    for(i=0;i<len;i++)
+    {
+        if(a[i]==m)
+        {
+            a[i]='p';
+            break;
+        }
+        
+    }
+
+    printf("%s", a);
+
+    return 0;
+}

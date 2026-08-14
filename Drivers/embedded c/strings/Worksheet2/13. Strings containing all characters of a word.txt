@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <string.h>
+
+int containsAll(char str[], char word[])
+{
+    for (int i = 0; word[i] != '\0'; i++)
+    {
+        int found = 0;
+
+        for (int j = 0; str[j] != '\0'; j++)
+        {
+            if (word[i] == str[j])
+            {
+                found = 1;
+                break;
+            }
+        }
+
+        if (!found)
+            return 0;
+    }
+
+    return 1;
+}
+
+int main()
+{
+    char word[] = "act";
+    char list[][10] = {"cat", "tac", "act", "dog"};
+
+    int n = 4;
+
+    for (int i = 0; i < n; i++)
+    {
+        if (containsAll(list[i], word))
+            printf("%s ", list[i]);
+    }
+
+    return 0;
+}
