@@ -1,0 +1,67 @@
+
+//normal check
+
+const int RELAY_PIN = 4;
+
+void setup()
+{
+  pinMode(RELAY_PIN, OUTPUT);
+}
+
+void loop()
+{
+  digitalWrite(RELAY_PIN, HIGH);
+
+  delay(2000);
+
+  digitalWrite(RELAY_PIN, LOW);
+
+  delay(2000);
+}
+
+//use serial command
+const int RELAY_PIN = 4;
+
+void setup()
+{
+  Serial.begin(115200);
+  pinMode(RELAY_PIN, OUTPUT);
+}
+
+void loop()
+{
+  if (Serial.available())
+  {
+    char cmd = Serial.read();
+
+    if (cmd == '1')
+    {
+      digitalWrite(RELAY_PIN, HIGH);
+      Serial.println(Relay ON);
+    }
+
+    if (cmd == '0')
+    {
+      digitalWrite(RELAY_PIN, LOW);
+      Serial.println(Relay OFF);
+    }
+  }
+}
+
+//button used
+const int BUTTON = 2;
+const int RELAY = 4;
+
+void setup()
+{
+  pinMode(BUTTON, INPUT_PULLUP);
+  pinMode(RELAY, OUTPUT);
+}
+
+void loop()
+{
+  if (digitalRead(BUTTON) == LOW)
+    digitalWrite(RELAY, HIGH);
+  else
+    digitalWrite(RELAY, LOW);
+}

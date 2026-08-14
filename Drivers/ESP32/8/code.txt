@@ -1,0 +1,32 @@
+#include "BluetoothSerial.h"
+
+BluetoothSerial SerialBT;
+
+#define SENSOR_PIN 34
+
+void setup()
+{
+    Serial.begin(115200);
+
+    // Start Bluetooth
+    SerialBT.begin("ESP32_BT");
+
+    Serial.println("Bluetooth Started!");
+    Serial.println("Device Name: ESP32_BT");
+}
+
+void loop()
+{
+    // Read sensor value
+    int sensorValue = analogRead(SENSOR_PIN);
+
+    // Send data through Bluetooth
+    SerialBT.print("Sensor Value: ");
+    SerialBT.println(sensorValue);
+
+    // Also print to Serial Monitor
+    Serial.print("Sensor Value: ");
+    Serial.println(sensorValue);
+
+    delay(1000);
+}

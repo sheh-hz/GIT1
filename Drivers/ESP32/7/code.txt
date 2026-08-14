@@ -1,0 +1,81 @@
+#include <WiFi.h>
+#include <HTTPClient.h>
+
+// Wokwi Wi-Fi
+const char* ssid = "Wokwi-GUEST";
+const char* password = "";
+
+// ThingSpeak details
+unsigned long channelID = YOUR_CHANNEL_ID;
+const char* writeAPIKey = "YOUR_WRITE_API_KEY";
+
+// Sensor pin
+#define SENSOR_PIN 34
+
+void setup()
+{
+    Serial.begin(115200);
+
+    // Connect to Wi-Fi
+    WiFi.begin(ssid, password);
+
+    Serial.print("Connecting to Wi-Fi");
+
+    while (WiFi.status() != WL_CONNECTED)
+    {
+        delay(500);
+        Serial.print(".");
+    }
+
+    Serial.println();
+    Serial.println("Wi-Fi Connected!");
+
+    Serial.print("ESP32 IP: ");
+    Serial.println(WiFi.localIP());
+}
+
+void loop()
+{
+    // Read sensor
+    int sensorValue = analogRead(SENSOR_PIN);
+
+    Serial.print("Sensor Value: ");
+    Serial.println(sensorValue);
+
+    // Check Wi-Fi
+    if (WiFi.status() == WL_CONNECTED)
+    {
+        HTTPClient http;
+
+        String url =
+            "https://api.thingspeak.com/update?api_key=" +
+            String(writeAPIKey) +
+            "&field1=" +
+            String(sensorValue);
+
+        http.begin(url);
+
+        int httpResponseCode = http.GET();
+
+        if (httpResponseCode > 0)
+        {
+            Serial.print("ThingSpeak Response: ");
+            Serial.println(httpResponseCode);
+
+            String response = http.getString();
+
+            Serial.print("Server Response: ");
+            Serial.println(response);
+        }
+        else
+        {
+            Serial.print("Error: ");
+            Serial.println(httpResponseCode);
+        }
+
+        http.end();
+    }
+
+    // ThingSpeak requires an interval between updates
+    delay(20000);
+}

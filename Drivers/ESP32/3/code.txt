@@ -1,0 +1,15 @@
+const int pin = 32;
+
+void setup()
+{
+  Serial.begin(115200);
+}
+
+void loop()
+{
+  int adc_value=analogRead(pin);
+  Serial.print("adc value = ");
+  Serial.print(adc_value);
+  Serial.print("\n");
+  delay(1000);
+}

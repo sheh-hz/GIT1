@@ -1,0 +1,35 @@
+#include <SPI.h>
+
+const int CS_PIN = 5;
+
+void setup()
+{
+  Serial.begin(115200);
+
+  pinMode(CS_PIN, OUTPUT);
+  digitalWrite(CS_PIN, HIGH);
+
+  SPI.begin();   // SCK=18, MISO=19, MOSI=23
+
+  Serial.println("SPI Loopback Test");
+}
+
+void loop()
+{
+  byte txData = 0x55;
+  byte rxData;
+
+  digitalWrite(CS_PIN, LOW);
+
+  rxData = SPI.transfer(txData);
+
+  digitalWrite(CS_PIN, HIGH);
+
+  Serial.print("TX = 0x");
+  Serial.print(txData, HEX);
+
+  Serial.print("   RX = 0x");
+  Serial.println(rxData, HEX);
+
+  delay(1000);
+}
