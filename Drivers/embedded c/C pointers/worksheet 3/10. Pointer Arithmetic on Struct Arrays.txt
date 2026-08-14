@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdint.h>
+
+struct Peripheral
+{
+    uint8_t status;
+    uint8_t control;
+    uint16_t data;
+};
+
+int main(void)
+{
+    struct Peripheral peripherals[5];
+
+    struct Peripheral *ptr = peripherals;
+
+    /* Initialize */
+    for (int i = 0; i < 5; i++)
+    {
+        (ptr + i)->status = 0;
+        (ptr + i)->control = 0;
+        (ptr + i)->data = 100 + i;
+    }
+
+    /* Modify */
+    for (int i = 0; i < 5; i++)
+    {
+        (ptr + i)->status = 1;
+        (ptr + i)->control = 2;
+    }
+
+    /* Print */
+    for (int i = 0; i < 5; i++)
+    {
+        printf("Peripheral %d:\n", i);
+        printf("Status  = %u\n", (ptr + i)->status);
+        printf("Control = %u\n", (ptr + i)->control);
+        printf("Data    = %u\n\n", (ptr + i)->data);
+    }
+
+    return 0;
+}

@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stddef.h>
+
+void mem_copy(void *dest, const void *src, size_t n)
+{
+    char *d = (char *)dest;
+    const char *s = (const char *)src;
+
+    for (size_t i = 0; i < n; i++)
+    {
+        d[i] = s[i];
+    }
+}
+
+int main(void)
+{
+    int src_int[3] = {10, 20, 30};
+    int dest_int[3] = {0};
+
+    float src_float[3] = {1.1f, 2.2f, 3.3f};
+    float dest_float[3] = {0};
+
+    mem_copy(dest_int, src_int, sizeof(src_int));
+    mem_copy(dest_float, src_float, sizeof(src_float));
+
+    printf("Integer array:\n");
+
+    for (int i = 0; i < 3; i++)
+    {
+        printf("%d ", dest_int[i]);
+    }
+
+    printf("\n\nFloat array:\n");
+
+    for (int i = 0; i < 3; i++)
+    {
+        printf("%.2f ", dest_float[i]);
+    }
+
+    return 0;
+}

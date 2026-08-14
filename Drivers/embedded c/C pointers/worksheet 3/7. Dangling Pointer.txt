@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int *allocate_buffer(void)
+{
+    int *buf = malloc(10 * sizeof(int));
+
+    if (buf == NULL)
+    {
+        return NULL;
+    }
+
+    for (int i = 0; i < 10; i++)
+    {
+        buf[i] = i * 10;
+    }
+
+    return buf;
+}
+
+int main(void)
+{
+    int *ptr = allocate_buffer();
+
+    if (ptr == NULL)
+    {
+        printf("Memory allocation failed\n");
+        return 1;
+    }
+
+    printf("Before free: %d\n", ptr[0]);
+
+    free(ptr);
+
+    /*
+     * ptr is now a dangling pointer.
+     */
+
+    printf("After free: %d\n", ptr[0]);  // WRONG
+
+    return 0;
+}

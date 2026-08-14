@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+typedef int (*CalibArrayPtr)[10];
+
+CalibArrayPtr get_calibration_data(void)
+{
+    static int calibration[10] =
+    {
+        100, 101, 102, 103, 104,
+        105, 106, 107, 108, 109
+    };
+
+    return &calibration;
+}
+
+int main(void)
+{
+    CalibArrayPtr ptr = get_calibration_data();
+
+    for (int i = 0; i < 10; i++)
+    {
+        printf("Calibration[%d] = %d\n",
+               i, (*ptr)[i]);
+    }
+
+    return 0;
+}

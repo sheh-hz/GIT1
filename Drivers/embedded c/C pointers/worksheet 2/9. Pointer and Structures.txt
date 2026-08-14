@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+typedef struct stu
+{
+    int age;
+    char *name;
+}stu;
+void fun(stu *s1)
+{
+    printf("%d\t",s1->age);
+    printf("%s\n",s1->name);
+}
+void main()
+{
+    stu *s1=malloc(sizeof(stu));
+    s1->name = (char *)malloc(20 * sizeof(char));
+    scanf("%d",&s1->age);
+    scanf(" %s",s1->name);
+    printf("%d\t",s1->age);
+    printf("%s\n",s1->name);
+    fun(s1);
+}

@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+void reverse(int *p,int *q)
+{
+    while(p<q)
+    {
+        int t=*p;
+        *p=*q;
+        *q=t;
+        p++;
+        q--;
+    }
+    
+}
+int main()
+{
+   int arr[]={1,2,3,4,5},sum=0,i;
+   int* p=arr;
+   for(i=0;i<5;i++)
+   {
+       printf("%d\t",*p);
+       sum+=*p;
+       *p+=5;
+       p++;
+       
+   }
+   printf("\nsum=%d\n",sum);
+   printf("after adding : ");
+   p=arr;
+   for(i=0;i<5;i++)
+   {
+       printf("%d\t",*p);
+       p++;
+   }
+   p=arr;
+   int l=sizeof(arr)/sizeof(arr[0]);
+   int *q=&arr[l-1];
+   reverse(p,q);
+   printf("\nafter reverse : ");
+   for(i=0;i<5;i++)
+   {
+       printf("%d\t",*p);
+       p++;
+   }
+}

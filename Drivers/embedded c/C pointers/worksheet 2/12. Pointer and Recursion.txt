@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+void reverseString(char *str)
+{
+    if (*str == '\0')
+        return;
+    reverseString(str + 1);
+    printf("%c", *str);
+}
+
+void traverseList(struct Node *head)
+{
+    if (head == NULL)
+        return;
+    printf("%d ", head->data);
+    traverseList(head->next);
+}
+
+int sumArray(int *arr, int n)
+{
+    if (n == 0)
+        return 0;
+    return *arr + sumArray(arr + 1, n - 1);
+}
+
+int main()
+{
+    char str[100];
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    printf("Reversed String: ");
+    reverseString(str);
+    printf("\n");
+
+    struct Node *head = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *second = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *third = (struct Node *)malloc(sizeof(struct Node));
+
+    head->data = 10;
+    head->next = second;
+
+    second->data = 20;
+    second->next = third;
+
+    third->data = 30;
+    third->next = NULL;
+
+    printf("Linked List: ");
+    traverseList(head);
+    printf("\n");
+
+    int arr[] = {5, 10, 15, 20};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Sum of Array = %d\n", sumArray(arr, n));
+
+    free(head);
+    free(second);
+    free(third);
+
+    return 0;
+}

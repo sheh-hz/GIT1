@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+   int *p,i;
+   float *q;
+   char *r;
+   p=malloc(sizeof(int));
+   q=malloc(sizeof(int));
+   r=malloc(sizeof(int));
+    
+    int a=10;
+    float b=20;
+    char c='M';
+    p=&a;
+    q=&b;
+    r=&c;
+    printf("%d\n",*p);
+    printf("%f\n",*q);
+    printf("%c\n",*r);
+    
+    int *arr=malloc(sizeof(int)*5);
+    for(i=0;i<5;i++)
+    {
+        *(arr+i)=(i+1)*10;
+    }
+    int *ptr=arr;
+    printf("before typecaste : ");
+    for(i=0;i<5;i++)
+    {
+        printf("%d\t",*ptr);
+        ptr++;
+    }
+    printf("\nafter typecaste : ");
+    void *v=arr;
+    int *qtr=(int *)v;
+    for(i=0;i<5;i++)
+    {
+        printf("%d\t",*qtr);
+        qtr++;
+    }
+}

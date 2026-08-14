@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+char * strcatt(char *p,char *q)
+{
+    char *ret=p;
+    while(*p!='\0')
+    {
+        p++;
+    }
+    while(*q!='\0')
+    {
+        *p=*q;
+        p++;
+        q++;
+    }
+    *p='\0';
+    return ret;
+}
+char * strcpyy(char *p,char  *q)
+{
+    char *ret=p;
+    while(*q!='\0')
+    {
+        *p=*q;
+        p++;
+        q++;
+    }
+    *p='\0';
+    return ret;
+}
+
+void main()
+{
+   char p[20]="hello";
+   char *q=p;
+   while(*q!='\0')
+   {
+       printf("%c",*q);
+       q++;
+   }
+   q="world";
+   char *str=strcatt(p,q);
+   printf("\n%s\n",str);
+   printf("%s",strcpyy(p,q));
+}

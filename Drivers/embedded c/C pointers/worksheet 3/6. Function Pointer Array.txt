@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+void init(void)
+{
+    printf("Device initialized\n");
+}
+
+void start(void)
+{
+    printf("Device started\n");
+}
+
+void stop(void)
+{
+    printf("Device stopped\n");
+}
+
+int main(void)
+{
+    void (*cmd_table[])(void) = {
+        init,
+        start,
+        stop
+    };
+
+    int command;
+
+    printf("Enter command (0-init, 1-start, 2-stop): ");
+    scanf("%d", &command);
+
+    if (command >= 0 && command < 3)
+    {
+        cmd_table[command]();
+    }
+    else
+    {
+        printf("Invalid command\n");
+    }
+
+    return 0;
+}

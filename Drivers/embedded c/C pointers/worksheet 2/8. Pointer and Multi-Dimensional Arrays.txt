@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdlib.h>
+void fun(int (*p)[3])
+{
+    for(int i=0;i<3;i++)
+   {
+       for(int j=0;j<3;j++)
+       {
+           printf("%d\t",*(*(p+i)+j));
+       }
+       printf("\n");
+   }
+}
+void main()
+{
+   int a[3][3],i,j;
+   int (*p)[3]=a;
+   for(i=0;i<3;i++)
+   {
+       for(j=0;j<3;j++)
+       {
+           scanf("%d",*(p+i)+j);
+       }
+   }
+   printf("array is \n");
+   for(i=0;i<3;i++)
+   {
+       for(j=0;j<3;j++)
+       {
+           printf("%d\t",*(*(p+i)+j));
+       }
+       printf("\n");
+   }
+   fun(a);
+}

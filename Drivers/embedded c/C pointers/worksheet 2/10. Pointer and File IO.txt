@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    FILE *fp;
+    char *buffer;
+    long size;
+
+    fp = fopen("sample.txt", "r+");
+
+    if (fp == NULL)
+    {
+        printf("Cannot open file.\n");
+        return 1;
+    }
+
+    fseek(fp, 0, SEEK_END);
+    size = ftell(fp);
+    rewind(fp);
+
+    buffer = (char *)malloc((size + 1) * sizeof(char));
+
+    if (buffer == NULL)
+    {
+        printf("Memory allocation failed.\n");
+        fclose(fp);
+        return 1;
+    }
+
+    fread(buffer, sizeof(char), size, fp);
+    buffer[size] = '\0';
+
+    printf("File Contents:\n%s\n", buffer);
+
+    fseek(fp, 0, SEEK_END);
+    fprintf(fp, "\nThis line is added using dynamic memory.");
+
+    free(buffer);
+    fclose(fp);
+
+    printf("Data written successfully.\n");
+
+    return 0;
+}

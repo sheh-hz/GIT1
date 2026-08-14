@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+
+int main(void)
+{
+    int rows = 4;
+    int cols = 4;
+
+    uint32_t **reg_block;
+
+    reg_block = malloc(rows * sizeof(uint32_t *));
+
+    if (reg_block == NULL)
+    {
+        return 1;
+    }
+
+    for (int i = 0; i < rows; i++)
+    {
+        reg_block[i] = malloc(cols * sizeof(uint32_t));
+
+        if (reg_block[i] == NULL)
+        {
+            for (int j = 0; j < i; j++)
+            {
+                free(reg_block[j]);
+            }
+
+            free(reg_block);
+            return 1;
+        }
+    }
+
+    /* Initialize */
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            reg_block[i][j] = 0x1000 + (i * cols + j);
+        }
+    }
+
+    /* Print */
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            printf("0x%X ", reg_block[i][j]);
+        }
+
+        printf("\n");
+    }
+
+    /* Free */
+    for (int i = 0; i < rows; i++)
+    {
+        free(reg_block[i]);
+    }
+
+    free(reg_block);
+
+    return 0;
+}
