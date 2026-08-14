@@ -1,0 +1,54 @@
+1
+volt=float(input("enter voltage"))
+if volt>3.3:
+    print("over voltage")
+elif volt<3.0:
+    print("under voltage")
+else:
+    print("nominal")
+
+2
+num=0b10010010
+if(num&0x80):
+    print("set")
+else:
+    print("not")
+
+3
+temp=float(input("enter temp"))
+if temp>75:
+    print("over temp")
+elif temp<25:
+    print("low temp")
+else:
+    print("normal")
+    
+4
+a = 1
+b = 0
+print("AND:", a & b)
+print("OR :", a | b)
+print("XOR:", a ^ b)
+
+
+7
+power_on=True
+overcurrent=True
+overvoltage=False
+if power_on==True:
+    print("system safe")
+elif overcurrent==True:
+    print("shut down")
+elif overvoltage==True:
+    print("shut down")
+    
+15
+a=98
+b=101
+if abs(a-b)<=5:
+    print("match")
+else:
+    print("no match")
+
+
+

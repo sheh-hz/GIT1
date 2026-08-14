@@ -1,0 +1,108 @@
+1.
+a=3
+b=2
+print(a**b)
+
+2.
+a=2
+b=3
+c=4
+x=5
+print((a*(x**2))+b*x+c)
+
+3.
+num=29
+divisor=6
+print(num%divisor)
+print(num/divisor)
+
+4.
+num=int(input("enter number"))
+if(num>0):
+    print("positive")
+elif(num<0):
+    print("negative")
+else:
+    print("zero")
+    
+5.
+n = -12
+print(abs(n))
+
+6.
+a=10
+b=5
+a,b=b,a
+
+7.
+x=5
+y=8
+z=10
+res=(x+y+z)/3
+print(res)
+
+8.
+a=10
+b=5
+c=a if a<b else b
+print("smaller" ,c)
+
+9.
+x=9
+y=5
+print(x|y,x^y)
+
+10.
+num = 18
+print(num % 2 == 0 and num % 3 == 0)
+
+11.
+a = 14
+b = 27
+c = 19
+largest = a if a > b and a > c else (b if b > c else c)
+print(largest)
+
+12.
+n = 32
+print(n > 0 and (n & (n - 1)) == 0)
+
+13.a = 20
+b = 12
+c = 18
+second_largest = a + b + c - (a if a > b and a > c else (b if b > c else c)) - (a if a < b and a < c else (b if b < c else c))
+print(second_largest)
+
+14.
+n = 12
+bit_position = 2
+print(n ^ (1 << bit_position))
+
+15.
+n = 29
+print(bin(n).count('1'))
+
+16.
+n = -56
+print((n > 0) - (n < 0))
+
+17.
+n = 12
+print(n % 4 == 0 and n % 8 != 0)
+
+18.
+n = 150
+k = 2
+print(((n << k) | (n >> (8 - k))) & 0xFF)
+
+19.
+a = 8
+b = 27
+c = 14
+difference = (a if a > b and a > c else (b if b > c else c)) - (a if a < b and a < c else (b if b < c else c))
+print(difference)
+
+20.
+n = 9
+bit_position = 3
+print(n | (1 << bit_position))

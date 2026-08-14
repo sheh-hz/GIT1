@@ -1,0 +1,122 @@
+
+1
+def print_details(name, age):
+    print(name,age)
+print_details("alice",25)
+
+2
+def multiply(x, y):
+    return x*y
+print(multiply(4,5))
+
+3
+def greet_person(name, greeting):
+    print(greeting,name)
+greet_person("John", "Hi")
+
+4
+pi=3.14
+def area_of_circle(radius):
+    return pi*radius*radius
+print(area_of_circle(3))
+
+5
+def is_negative(number):
+    if number<0:
+        return True
+    else:
+        return False
+print(is_negative(-7))
+print(is_negative(0))
+
+6
+def grade(score):
+    if score>=90:
+        return 'A'
+    elif score>=80 and score<90:
+        return 'B'
+    elif score>=70 and score<80:
+        return 'C'
+    else:
+        return 'D'
+
+print(grade(85))
+print(grade(72))
+
+8
+def power(base, exponent=2):
+    return base**exponent
+print(power(3))
+print(power(2, 5))
+print(grade(50))
+
+10
+def calculate(a, b):
+    summ=a+b
+    difference=a-b
+    return summ,difference
+s, d = calculate(10, 3)
+print("Sum:", s)
+print("Difference:", d)
+
+11
+def string_stats(s):
+    number=0
+    vowel=0
+    consonants=0
+    for i in s:
+        if i.lower() in "aeiou":
+            vowel+=1
+        if i.isalpha():
+            consonants+=1
+        if i.isdigit():
+            number+=1
+    return vowel,consonants,number
+    
+v,c,n=string_stats("Hello123")
+print(v,c,n)
+
+12
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    return n * factorial(n - 1)
+
+print(factorial(5))
+
+13
+def sum_list(lst):
+    a=0
+    for i in lst:
+        a+=i
+    return a
+print(sum_list([1, 2, 3, 4]))
+
+
+14
+def reverse_string(s):
+    if len(s) == 0:
+        return s
+    return reverse_string(s[1:]) + s[0]
+
+print(reverse_string("python"))
+
+15
+def fibonacci(n):
+    if n==0:
+        return n
+    elif n==1:
+        return n
+    else:
+        return fibonacci(n-1)+fibonacci(n-2)
+
+print(fibonacci(6))
+
+def min_max(numbers):
+    return max(numbers),min(numbers)
+    
+    
+    
+large,small = min_max([8, 3, 5, 2, 10])
+print("Smallest:", small)
+print("Largest:", large)

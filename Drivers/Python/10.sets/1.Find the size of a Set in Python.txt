@@ -1,0 +1,6 @@
+bag = {"ball", "car", "puzzle", "car", "yo-yo"}
+c=set(bag)
+c=0
+for i in bag:
+    if i not in c:
+    c+=1

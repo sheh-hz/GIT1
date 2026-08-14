@@ -1,0 +1,7 @@
+num=int(input('number'))
+val=num
+if num>0:
+    for i in range(10):
+        print(val)
+        val+=num
+        
