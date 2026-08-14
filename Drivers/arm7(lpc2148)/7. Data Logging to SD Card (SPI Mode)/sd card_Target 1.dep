@@ -1,0 +1,25 @@
+Dependencies for Project 'sd card', Target 'Target 1': (DO NOT MODIFY !)
+F (.\Startup.s)(0x532C14EA)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Philips--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
+F (.\sd.c)(0x6A66F72F)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Philips-o .\sd.o --omf_browse .\sd.crf --depend .\sd.d)
+I (C:\Keil\ARM\ARMCC\include\stdio.h)(0x51C7E87C)
+I (uart.h)(0x6A66F68A)
+I (adc.h)(0x6A66F6AC)
+I (spi.h)(0x6A66F6CB)
+I (sdcard.h)(0x6A66F6EA)
+I (delah.h)(0x6A66F5D1)
+F (.\delah.h)(0x6A66F5D1)()
+F (.\delay.c)(0x6A66F658)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Philips-o .\delay.o --omf_browse .\delay.crf --depend .\delay.d)
+I (C:\Keil\ARM\Inc\Philips\LPC214x.h)(0x532C1500)
+I (delah.h)(0x6A66F5D1)
+F (.\sdcard.c)(0x6A66F700)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Philips-o .\sdcard.o --omf_browse .\sdcard.crf --depend .\sdcard.d)
+I (spi.h)(0x6A66F6CB)
+F (.\spi.c)(0x6A66F6D9)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Philips-o .\spi.o --omf_browse .\spi.crf --depend .\spi.d)
+I (C:\Keil\ARM\Inc\Philips\LPC214x.h)(0x532C1500)
+F (.\uart.c)(0x6A66F69B)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Philips-o .\uart.o --omf_browse .\uart.crf --depend .\uart.d)
+I (C:\Keil\ARM\Inc\Philips\LPC214x.h)(0x532C1500)
+F (.\sdcard.h)(0x6A66F6EA)()
+F (.\spi.h)(0x6A66F6CB)()
+F (.\uart.h)(0x6A66F68A)()
+F (.\adc.h)(0x6A66F6AC)()
+F (.\adc.c)(0x6A66F6BA)(-c --cpu ARM7TDMI -D__EVAL -g -O0 --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Philips-o .\adc.o --omf_browse .\adc.crf --depend .\adc.d)
+I (C:\Keil\ARM\Inc\Philips\LPC214x.h)(0x532C1500)

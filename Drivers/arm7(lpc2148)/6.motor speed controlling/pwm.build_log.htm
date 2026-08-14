@@ -1,0 +1,26 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\saifudeen\Desktop\arm7(lpc2148)\6.motor speed controlling\pwm.uvproj
+Project File Date:  07/24/2026
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+assembling Startup.s...
+compiling pwm.c...
+pwm.c(110): warning:  #61-D: integer operation result is out of range
+                        while(!(AD0DR1 & (1 << 31)));   // Wait until DONE bit is set
+pwm.c(110): warning:  #68-D: integer conversion resulted in a change of sign
+                        while(!(AD0DR1 & (1 << 31)));   // Wait until DONE bit is set
+pwm.c(121): warning:  #1-D: last line of file ends without a newline
+  }
+pwm.c: 3 warnings, 0 errors
+linking...
+Program Size: Code=2416 RO-data=16 RW-data=0 ZI-data=1256  
+FromELF: creating hex file...
+".\pwm.axf" - 0 Error(s), 3 Warning(s).
+</pre>
+</body>
+</html>

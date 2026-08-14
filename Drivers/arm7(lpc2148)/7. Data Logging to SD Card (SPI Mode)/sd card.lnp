@@ -1,0 +1,12 @@
+--cpu ARM7TDMI
+".\startup.o"
+".\sd.o"
+".\delay.o"
+".\sdcard.o"
+".\spi.o"
+".\uart.o"
+".\adc.o"
+--strict --scatter ".\sd card.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\sd card.map" -o ".\sd card.axf"
