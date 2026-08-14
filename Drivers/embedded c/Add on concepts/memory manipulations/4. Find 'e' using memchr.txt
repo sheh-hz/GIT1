@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char str[] = "excellent";
+
+    char *ptr = memchr(str, 'e', strlen(str));
+
+    if (ptr != NULL)
+    {
+        printf("Character found: %c\n", *ptr);
+        printf("Index: %ld\n", ptr - str);
+    }
+    else
+    {
+        printf("Character not found\n");
+    }
+
+    return 0;
+}

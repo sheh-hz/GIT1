@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdarg.h>
+
+void find_max_min(int count, ...)
+{
+    va_list args;
+
+    va_start(args, count);
+
+    // Get first value
+    int value = va_arg(args, int);
+
+    int max = value;
+    int min = value;
+
+    // Process remaining values
+    for (int i = 1; i < count; i++)
+    {
+        value = va_arg(args, int);
+
+        if (value > max)
+            max = value;
+
+        if (value < min)
+            min = value;
+    }
+
+    va_end(args);
+
+    printf("Maximum value: %d\n", max);
+    printf("Minimum value: %d\n", min);
+}
+
+int main()
+{
+    find_max_min(5, 3, 5, 9, 0, 7);
+
+    return 0;
+}

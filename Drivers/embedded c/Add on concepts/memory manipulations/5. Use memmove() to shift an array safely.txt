@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    int arr[6] = {1, 2, 3, 4, 5};
+
+    memmove(&arr[2], &arr[1], 4 * sizeof(int));
+
+    for (int i = 0; i < 6; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
