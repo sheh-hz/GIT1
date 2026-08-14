@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main()
+{
+    int arr[] = {1, 2, 3, 2, 2, 5};
+    int n = 6;
+    int number = 2;
+
+    int count = 0;
+    int i;
+
+    for (i = 0; i < n; i++)
+    {
+        if (arr[i] == number)
+            count++;
+    }
+
+    printf("Number %d occurs %d times\n", number, count);
+
+    return 0;
+}

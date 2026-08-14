@@ -1,0 +1,57 @@
+#include <stdio.h>
+
+int main()
+{
+    int arr[] = {16, 17, 4, 3, 5, 2};
+    int n = 6;
+    int i, j, isLeader;
+
+    printf("Leader elements: ");
+
+    for (i = 0; i < n; i++)
+    {
+        isLeader = 1;
+
+        for (j = i + 1; j < n; j++)
+        {
+            if (arr[i] <= arr[j])
+            {
+                isLeader = 0;
+                break;
+            }
+        }
+
+        if (isLeader)
+            printf("%d ", arr[i]);
+    }
+
+    return 0;
+}#include <stdio.h>
+
+int main()
+{
+    int arr[] = {16, 17, 4, 3, 5, 2};
+    int n = 6;
+    int i, j, isLeader;
+
+    printf("Leader elements: ");
+
+    for (i = 0; i < n; i++)
+    {
+        isLeader = 1;
+
+        for (j = i + 1; j < n; j++)
+        {
+            if (arr[i] <= arr[j])
+            {
+                isLeader = 0;
+                break;
+            }
+        }
+
+        if (isLeader)
+            printf("%d ", arr[i]);
+    }
+
+    return 0;
+}

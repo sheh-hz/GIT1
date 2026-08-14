@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int main()
+{
+    int arr[] = {1, 2, 4, 6};
+    int n = 4;
+
+    int totalNumbers = n + 2;
+    int expectedSum;
+    int actualSum = 0;
+
+    int i;
+
+    for (i = 1; i <= totalNumbers; i++)
+        expectedSum += i;
+
+    for (i = 0; i < n; i++)
+        actualSum += arr[i];
+
+    printf("Missing numbers: ");
+
+    for (i = 1; i <= totalNumbers; i++)
+    {
+        int found = 0;
+
+        for (int j = 0; j < n; j++)
+        {
+            if (arr[j] == i)
+            {
+                found = 1;
+                break;
+            }
+        }
+
+        if (!found)
+            printf("%d ", i);
+    }
+
+    return 0;
+}

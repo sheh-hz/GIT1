@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main()
+{
+    int arr[] = {-7, 1, 5, 2, -4, 3, 0};
+    int n = 7;
+    int i, j;
+    int leftSum, rightSum;
+
+    for (i = 0; i < n; i++)
+    {
+        leftSum = 0;
+        rightSum = 0;
+
+        for (j = 0; j < i; j++)
+            leftSum += arr[j];
+
+        for (j = i + 1; j < n; j++)
+            rightSum += arr[j];
+
+        if (leftSum == rightSum)
+        {
+            printf("Equilibrium index is %d\n", i);
+            return 0;
+        }
+    }
+
+    printf("No equilibrium index found\n");
+
+    return 0;
+}

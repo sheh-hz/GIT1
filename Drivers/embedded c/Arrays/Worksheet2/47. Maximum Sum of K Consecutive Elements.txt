@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int main()
+{
+    int arr[] = {2, 3, 4, 1, 5, 6, 7};
+    int n = 7;
+    int k = 3;
+
+    int sum = 0;
+    int maxSum;
+    int i;
+
+    for (i = 0; i < k; i++)
+        sum += arr[i];
+
+    maxSum = sum;
+
+    for (i = k; i < n; i++)
+    {
+        sum = sum + arr[i] - arr[i - k];
+
+        if (sum > maxSum)
+            maxSum = sum;
+    }
+
+    printf("Maximum sum of %d consecutive elements: %d\n",
+           k, maxSum);
+
+    return 0;
+}

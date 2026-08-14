@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int main()
+{
+    int arr[] = {1, 0, 2, 0, 0, 3, 4};
+    int n = 7;
+
+    int index = 0;
+    int i;
+
+    for (i = 0; i < n; i++)
+    {
+        if (arr[i] != 0)
+        {
+            arr[index] = arr[i];
+            index++;
+        }
+    }
+
+    while (index < n)
+    {
+        arr[index] = 0;
+        index++;
+    }
+
+    printf("Output: ");
+
+    for (i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+
+    return 0;
+}

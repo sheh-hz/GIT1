@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main()
+{
+    int arr1[] = {1, 2, 3, 4, 5};
+    int arr2[] = {2, 4, 5};
+
+    int n1 = 5;
+    int n2 = 3;
+
+    int i, j, found;
+
+    for (i = 0; i < n2; i++)
+    {
+        found = 0;
+
+        for (j = 0; j < n1; j++)
+        {
+            if (arr2[i] == arr1[j])
+            {
+                found = 1;
+                break;
+            }
+        }
+
+        if (!found)
+        {
+            printf("Array2 is not a subset of Array1\n");
+            return 0;
+        }
+    }
+
+    printf("Array2 is a subset of Array1\n");
+
+    return 0;
+}
