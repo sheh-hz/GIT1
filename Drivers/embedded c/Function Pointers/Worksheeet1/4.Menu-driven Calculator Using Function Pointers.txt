@@ -1,0 +1,38 @@
+
+#include <stdio.h>
+#include<math.h>
+int power(int a,int b)
+{
+    return pow(a,b);
+}
+int modulo(int a,int b)
+{
+    return a%b;
+}
+int squareRoot(int a, int b)
+{
+    return sqrt(a);
+}
+int main()
+{
+    int a,b,choice;
+    int(*fn[3])(int,int)={power,modulo,squareRoot};
+    printf("Enter two values: ");
+    scanf("%d %d", &a, &b);
+
+    printf("\nChoose operation:\n");
+    printf("1. Power\n");
+    printf("2. Modulo\n");
+    printf("3. Square Root\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    if(choice < 1 || choice > 3)
+    {
+        printf("Invalid choice\n");
+        return 1;
+    }
+
+    printf("Result = %d\n", fn[choice - 1](a, b));
+    return 0;
+}

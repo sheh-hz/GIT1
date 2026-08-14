@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Person
+{
+    char name[30];
+    int age;
+};
+
+int compareByName(const void *a, const void *b)
+{
+    struct Person *p1 = (struct Person *)a;
+    struct Person *p2 = (struct Person *)b;
+
+    return strcmp(p1->name, p2->name);
+}
+
+int compareByAge(const void *a, const void *b)
+{
+    struct Person *p1 = (struct Person *)a;
+    struct Person *p2 = (struct Person *)b;
+
+    return p1->age - p2->age;
+}
+
+void printPersons(struct Person p[], int size)
+{
+    int i;
+
+    for(i = 0; i < size; i++)
+    {
+        printf("Name: %s Age: %d\n", p[i].name, p[i].age);
+    }
+}
+
+int main()
+{
+    struct Person people[] = {
+        {"John", 25},
+        {"Alice", 20},
+        {"David", 30},
+        {"Bob", 22}
+    };
+
+    int size = 4;
+
+    printf("Original Records:\n");
+    printPersons(people, size);
+
+    qsort(people, size, sizeof(struct Person), compareByName);
+
+    printf("\nSorted by Name:\n");
+    printPersons(people, size);
+
+    qsort(people, size, sizeof(struct Person), compareByAge);
+
+    printf("\nSorted by Age:\n");
+    printPersons(people, size);
+
+    return 0;
+}

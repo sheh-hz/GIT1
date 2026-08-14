@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+void start(void)
+{
+    printf("Starting system...\n");
+}
+
+void stop(void)
+{
+    printf("Stopping system...\n");
+}
+
+void reset(void)
+{
+    printf("Resetting system...\n");
+}
+
+void status(void)
+{
+    printf("System is running\n");
+}
+
+int main()
+{
+    void (*commandTable[4])(void);
+
+    int command;
+
+    commandTable[0] = start;
+    commandTable[1] = stop;
+    commandTable[2] = reset;
+    commandTable[3] = status;
+
+    printf("Enter command (0-3): ");
+    scanf("%d", &command);
+
+    if (command >= 0 && command < 4)
+    {
+        commandTable[command]();
+    }
+    else
+    {
+        printf("Invalid command\n");
+    }
+
+    return 0;
+}

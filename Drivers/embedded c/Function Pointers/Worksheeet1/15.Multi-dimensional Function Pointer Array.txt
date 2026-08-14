@@ -1,0 +1,66 @@
+#include <stdio.h>
+
+int intAdd(int a, int b)
+{
+    return a + b;
+}
+
+int intAnd(int a, int b)
+{
+    return a & b;
+}
+
+float floatAdd(float a, float b)
+{
+    return a + b;
+}
+
+/*
+   Operation 0 = Arithmetic
+   Operation 1 = Bitwise
+
+   Data type 0 = int
+   Data type 1 = float
+*/
+
+int main()
+{
+    int (*intTable[2])(int, int);
+
+    float (*floatTable[2])(float, float);
+
+    intTable[0] = intAdd;
+    intTable[1] = intAnd;
+
+    floatTable[0] = floatAdd;
+    floatTable[1] = NULL;
+
+    int operation = 0;
+    int dataType = 0;
+
+    if (operation == 0 && dataType == 0)
+    {
+        printf("Result = %d\n",
+               intTable[operation](10, 20));
+    }
+
+    operation = 1;
+    dataType = 0;
+
+    if (operation == 1 && dataType == 0)
+    {
+        printf("Result = %d\n",
+               intTable[operation](10, 3));
+    }
+
+    operation = 0;
+    dataType = 1;
+
+    if (operation == 0 && dataType == 1)
+    {
+        printf("Result = %.2f\n",
+               floatTable[operation](10.5f, 2.5f));
+    }
+
+    return 0;
+}

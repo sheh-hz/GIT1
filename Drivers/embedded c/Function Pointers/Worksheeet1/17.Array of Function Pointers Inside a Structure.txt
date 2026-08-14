@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int add(int a, int b)
+{
+    return a + b;
+}
+
+int subtract(int a, int b)
+{
+    return a - b;
+}
+
+int multiply(int a, int b)
+{
+    return a * b;
+}
+
+struct Calculator
+{
+    int (*operation[3])(int, int);
+};
+
+int main()
+{
+    struct Calculator calc;
+
+    calc.operation[0] = add;
+    calc.operation[1] = subtract;
+    calc.operation[2] = multiply;
+
+    printf("Addition = %d\n",
+           calc.operation[0](10, 5));
+
+    printf("Subtraction = %d\n",
+           calc.operation[1](10, 5));
+
+    printf("Multiplication = %d\n",
+           calc.operation[2](10, 5));
+
+    return 0;
+}

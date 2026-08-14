@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+int doubleValue(int x)
+{
+    return x * 2;
+}
+
+int increment(int x)
+{
+    return x + 1;
+}
+
+int square(int x)
+{
+    return x * x;
+}
+
+int main()
+{
+    int (*pipeline[3])(int);
+
+    int value = 2;
+    int i;
+
+    pipeline[0] = doubleValue;
+    pipeline[1] = increment;
+    pipeline[2] = square;
+
+    for (i = 0; i < 3; i++)
+    {
+        value = pipeline[i](value);
+    }
+
+    printf("Final result = %d\n", value);
+
+    return 0;
+}

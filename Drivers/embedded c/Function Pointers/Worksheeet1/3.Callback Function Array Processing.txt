@@ -1,0 +1,25 @@
+#include <stdio.h>
+void fun(int *p,int l)
+{
+    for(int i=0;i<l;i++)
+    {
+        *(p+i)+=5;
+        printf("%d ",*(p+i));
+    }
+}
+void function(void (*ptr)(int*,int),int *a,int l)
+{
+    (*ptr)(a,l);
+}
+void main()
+{
+    int arr[]={7,5,1,4,6},l=5;
+    printf("before callback ");
+    for(int i=0;i<l;i++)
+    {
+        printf("%d ",arr[i]);
+    }
+    printf("\nafter callback ");
+    function(fun,arr,l);
+    
+}

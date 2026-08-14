@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int factorial(int n);
+
+int (*factorial_ptr)(int) = factorial;
+
+int factorial(int n)
+{
+    if (n <= 1)
+        return 1;
+
+    return n * factorial_ptr(n - 1);
+}
+
+int main()
+{
+    int n = 5;
+
+    printf("Factorial of %d = %d\n",
+           n, factorial_ptr(n));
+
+    return 0;
+}
