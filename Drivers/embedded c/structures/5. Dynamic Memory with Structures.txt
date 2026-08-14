@@ -1,0 +1,181 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define SIZE 5
+
+struct Student
+{
+    int id;
+    char name[20];
+};
+
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+struct PoolNode
+{
+    int data;
+    int next;
+};
+
+struct PoolNode pool[SIZE];
+int freeList;
+
+struct Node *front = NULL, *rear = NULL;
+
+void initPool()
+{
+    int i;
+    for(i = 0; i < SIZE - 1; i++)
+        pool[i].next = i + 1;
+
+    pool[SIZE - 1].next = -1;
+    freeList = 0;
+}
+
+int allocate()
+{
+    if(freeList == -1)
+        return -1;
+
+    int index = freeList;
+    freeList = pool[index].next;
+    return index;
+}
+
+void deallocate(int index)
+{
+    pool[index].next = freeList;
+    freeList = index;
+}
+
+void enqueue(int value)
+{
+    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+
+    newNode->data = value;
+    newNode->next = NULL;
+
+    if(rear == NULL)
+        front = rear = newNode;
+    else
+    {
+        rear->next = newNode;
+        rear = newNode;
+    }
+}
+
+void dequeue()
+{
+    if(front == NULL)
+    {
+        printf("Queue is Empty\n");
+        return;
+    }
+
+    struct Node *temp = front;
+    front = front->next;
+
+    if(front == NULL)
+        rear = NULL;
+
+    free(temp);
+}
+
+void displayQueue()
+{
+    struct Node *temp = front;
+
+    while(temp != NULL)
+    {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+    printf("\n");
+}
+
+int main()
+{
+    int i;
+
+    printf("----- Dynamic Structure using malloc -----\n");
+
+    struct Student *s;
+    s = (struct Student *)malloc(sizeof(struct Student));
+
+    printf("Enter Student ID: ");
+    scanf("%d", &s->id);
+
+    printf("Enter Student Name: ");
+    scanf("%s", s->name);
+
+    printf("Student ID: %d\n", s->id);
+    printf("Student Name: %s\n", s->name);
+
+    free(s);
+
+    printf("\n----- Singly Linked List -----\n");
+
+    struct Node *head = NULL, *temp, *newNode;
+
+    for(i = 1; i <= 5; i++)
+    {
+        newNode = (struct Node *)malloc(sizeof(struct Node));
+        newNode->data = i * 10;
+        newNode->next = NULL;
+
+        if(head == NULL)
+            head = temp = newNode;
+        else
+        {
+            temp->next = newNode;
+            temp = newNode;
+        }
+    }
+
+    temp = head;
+
+    while(temp != NULL)
+    {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+
+    printf("\n\n----- Queue using Linked List -----\n");
+
+    enqueue(100);
+    enqueue(200);
+    enqueue(300);
+
+    printf("Queue: ");
+    displayQueue();
+
+    dequeue();
+
+    printf("After Dequeue: ");
+    displayQueue();
+
+    printf("\n----- Memory Pool Manager -----\n");
+
+    initPool();
+
+    int a = allocate();
+    int b = allocate();
+
+    pool[a].data = 500;
+    pool[b].data = 600;
+
+    printf("Allocated Data:\n");
+    printf("%d\n", pool[a].data);
+    printf("%d\n", pool[b].data);
+
+    deallocate(a);
+    deallocate(b);
+
+    printf("Memory returned to pool\n");
+
+    return 0;
+}

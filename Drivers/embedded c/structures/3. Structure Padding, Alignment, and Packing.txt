@@ -1,0 +1,27 @@
+#include <stdio.h>
+#pragma pack(1)
+struct stu
+{
+    char a;
+    int num;
+    int b;
+    long c;
+};
+struct bool
+{
+    char a;
+    float b;
+    short c;
+    int d;
+};
+int main()
+{
+    struct stu s1;
+    struct bool s2;
+    
+    printf("%d \n",sizeof(s1));
+    printf("%d \n",sizeof(s2));
+    
+    
+    return 0;
+}

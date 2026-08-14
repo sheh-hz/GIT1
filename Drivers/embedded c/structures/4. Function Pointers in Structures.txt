@@ -1,0 +1,61 @@
+#include <stdio.h>
+
+void ledOn()
+{
+    printf("LED is ON\n");
+}
+
+void ledOff()
+{
+    printf("LED is OFF\n");
+}
+
+void motorStart()
+{
+    printf("Motor Started\n");
+}
+
+void motorStop()
+{
+    printf("Motor Stopped\n");
+}
+
+struct Driver
+{
+    void (*start)();
+    void (*stop)();
+};
+
+int main()
+{
+    struct Driver driver;
+    int choice;
+
+    printf("Select Driver:\n");
+    printf("1. LED Driver\n");
+    printf("2. Motor Driver\n");
+    printf("Enter choice: ");
+    scanf("%d", &choice);
+
+    if(choice == 1)
+    {
+        driver.start = ledOn;
+        driver.stop = ledOff;
+    }
+    else if(choice == 2)
+    {
+        driver.start = motorStart;
+        driver.stop = motorStop;
+    }
+    else
+    {
+        printf("Invalid Choice\n");
+        return 1;
+    }
+
+    printf("\nExecuting Driver Functions:\n");
+    driver.start();
+    driver.stop();
+
+    return 0;
+}

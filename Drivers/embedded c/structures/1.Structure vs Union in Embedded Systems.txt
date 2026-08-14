@@ -1,0 +1,29 @@
+#include <stdio.h>
+struct stu
+{
+    char a;
+    int num;
+    float b;
+};
+union s
+{
+    char a;
+    int num;
+    float b;
+};
+int main()
+{
+    struct stu s1;
+    union s s2;
+    
+    printf("%d %d\n",sizeof(s1),sizeof(s2));
+    s1.a='m';
+    s1.num=27;
+    s1.b=4.5;
+    s2.a='r';
+    s2.num=2;
+    s2.b=2;
+    printf("%c %d %f\n",s1.a,s1.num,s1.b);
+    printf("%c %d %f\n",s2.a,s2.num,s2.b);
+    return 0;
+}

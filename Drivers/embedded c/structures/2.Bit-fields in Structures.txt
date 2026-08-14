@@ -1,0 +1,27 @@
+#include <stdio.h>
+struct stu
+{
+    char a:7;
+    int num:8;
+    int b:6;
+};
+void toggle(struct stu *p)
+{
+    p->num=!(p->num);
+    p->b=!(p->b);
+}
+int main()
+{
+    struct stu s1;
+    
+    
+    printf("%d \n",sizeof(s1));
+    s1.a='1';
+    s1.num=1;
+    s1.b=1;
+    printf("%c %d %d\n",s1.a,s1.num,s1.b);
+    toggle(&s1);
+    printf("%c %d %d\n",s1.a,s1.num,s1.b);
+    
+    return 0;
+}
